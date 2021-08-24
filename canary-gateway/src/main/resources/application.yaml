@@ -11,7 +11,7 @@ spring:
           uri: http://localhost:8081/
           predicates:
             - Path=/creditcheck
-            - Weight=service1, 50
+            - Weight=service1, 90
           filters:
             - RewritePath=/(?<segment>.*), /v1/$\{segment}
 
@@ -19,6 +19,6 @@ spring:
           uri: http://localhost:8081/
           predicates:
             - Path=/creditcheck
-            - Weight=service1, 50
+            - Weight=service1, 10
           filters:
             - RewritePath=/(?<segment>.*), /v2/$\{segment}
