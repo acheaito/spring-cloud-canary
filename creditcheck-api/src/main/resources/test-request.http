@@ -1,0 +1,8 @@
+### Legacy
+GET http://localhost:8081/v1/creditcheck
+
+### Modern
+GET http://localhost:8081/v2/creditcheck
+
+### Gateway
+GET http://localhost:8080/creditcheck
