@@ -1,0 +1,24 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: canary-test-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: service1_v1
+          uri: http://localhost:8081/
+          predicates:
+            - Path=/creditcheck
+            - Weight=service1, 50
+          filters:
+            - RewritePath=/(?<segment>.*), /v1/$\{segment}
+
+        - id: service1_v2
+          uri: http://localhost:8081/
+          predicates:
+            - Path=/creditcheck
+            - Weight=service1, 50
+          filters:
+            - RewritePath=/(?<segment>.*), /v2/$\{segment}
