@@ -3,9 +3,7 @@ package com.cheaito.poc.canarygateway.predicates;
 import org.apache.logging.log4j.util.Strings;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
-import java.util.Locale;
 import java.util.function.Predicate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
