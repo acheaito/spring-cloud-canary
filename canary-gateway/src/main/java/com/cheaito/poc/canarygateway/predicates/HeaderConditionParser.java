@@ -4,7 +4,6 @@ import org.apache.logging.log4j.util.Strings;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.Predicate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -27,10 +26,10 @@ public class HeaderConditionParser {
     }
 
     private void parseArguments() {
-        var argString = matcher.group(3).strip();
+        String argString = matcher.group(3).trim();
         this.arguments = Arrays.stream(argString.split(ARGUMENT_SEPARATOR))
-                .map(String::strip)
-                .filter(Predicate.not(String::isBlank))
+                .map(String::trim)
+                .filter(s -> !Strings.isBlank(s))
                 .collect(Collectors.toList());
     }
 
