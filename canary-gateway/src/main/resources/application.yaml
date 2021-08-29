@@ -7,7 +7,7 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: service1_v1
+        - id: creditcheck_v1
           uri: http://localhost:8081/
           predicates:
             - Path=/creditcheck
@@ -15,7 +15,7 @@ spring:
           filters:
             - RewritePath=/(?<segment>.*), /v1/$\{segment}
 
-        - id: service1_v2
+        - id: creditcheck_v2
           uri: http://localhost:8081/
           predicates:
             - Path=/creditcheck

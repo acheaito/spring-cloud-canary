@@ -11,6 +11,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.web.server.ServerWebExchange;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -50,10 +51,12 @@ class ConditionalHeaderPredicateFactoryTest {
 
     private ConditionalHeaderConfig config;
     private final Operation ENDS_WITH_OPERATION = new Operation(OperationName.ENDS_WITH, false);
+    private ConditionalHeaderPredicateFactory subject;
 
     @BeforeEach
     public void setUp() {
         config = new ConditionalHeaderConfig(X_ACCOUNT_KEY, CONDITION);
+        subject = new ConditionalHeaderPredicateFactory(parserFactory, testerFactory);
     }
 
     private void setupMocks() {
@@ -70,7 +73,7 @@ class ConditionalHeaderPredicateFactoryTest {
     @Test
     public void invokesParserGetOperation() {
         setupMocks();
-        new ConditionalHeaderPredicateFactory(parserFactory, testerFactory)
+        subject
                 .apply(config)
                 .test(serverExchange);
         verify(parser).getOperation();
@@ -79,7 +82,7 @@ class ConditionalHeaderPredicateFactoryTest {
     @Test
     public void invokesFactoryCreateMethodForParser() {
         setupMocks();
-        new ConditionalHeaderPredicateFactory(parserFactory, testerFactory)
+        subject
                 .apply(config)
                 .test(serverExchange);
         verify(parserFactory).create(conditionCaptor.capture());
@@ -89,7 +92,7 @@ class ConditionalHeaderPredicateFactoryTest {
     @Test
     public void invokesFactoryCreateMethodForTester() {
         setupMocks();
-        new ConditionalHeaderPredicateFactory(parserFactory, testerFactory)
+        subject
                 .apply(config)
                 .test(serverExchange);
         verify(testerFactory).create(accountValueCaptor.capture(),
@@ -103,7 +106,7 @@ class ConditionalHeaderPredicateFactoryTest {
     @Test
     public void invokesConditionTesterTestMethod() {
         setupMocks();
-        new ConditionalHeaderPredicateFactory(parserFactory, testerFactory)
+        subject
                 .apply(config)
                 .test(serverExchange);
         verify(tester).test();
@@ -112,6 +115,11 @@ class ConditionalHeaderPredicateFactoryTest {
     @Test
     public void returnsCorrectConfigClassType() {
         assertEquals(ConditionalHeaderConfig.class,
-                new ConditionalHeaderPredicateFactory(parserFactory,testerFactory).getConfigClass());
+                subject.getConfigClass());
+    }
+
+    @Test
+    public void returnsCorrectFieldsInOrder() {
+        assertEquals(Arrays.asList("header", "condition"), subject.shortcutFieldOrder());
     }
 }
