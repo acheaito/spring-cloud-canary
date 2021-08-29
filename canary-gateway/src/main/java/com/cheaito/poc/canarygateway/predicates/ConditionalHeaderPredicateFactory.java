@@ -1,23 +1,32 @@
 package com.cheaito.poc.canarygateway.predicates;
 
-import org.springframework.cloud.gateway.handler.predicate.GatewayPredicate;
 import org.springframework.cloud.gateway.handler.predicate.RoutePredicateFactory;
+import org.springframework.http.HttpHeaders;
 import org.springframework.web.server.ServerWebExchange;
 
 import java.util.function.Predicate;
 
 public class ConditionalHeaderPredicateFactory implements RoutePredicateFactory<ConditionalHeaderConfig> {
 
-    private final ConditionParser parser;
+    private final ConditionParserFactory parserFactory;
+    private final ConditionTesterFactory testerFactory;
 
-    public ConditionalHeaderPredicateFactory(ConditionParser parser) {
-        this.parser = parser;
+    public ConditionalHeaderPredicateFactory(ConditionParserFactory parserFactory, ConditionTesterFactory testerFactory) {
+        this.parserFactory = parserFactory;
+        this.testerFactory = testerFactory;
     }
 
     @Override
     public Predicate<ServerWebExchange> apply(ConditionalHeaderConfig config) {
-        return (GatewayPredicate) serverWebExchange -> {
-            return false;
+        ConditionParser parser = parserFactory.create(config.getCondition());
+
+        return exchange -> {
+            HttpHeaders headers = exchange.getRequest().getHeaders();
+            String valueToTest = headers.getFirst(config.getHeader());
+            ConditionTester tester = testerFactory.create(valueToTest,
+                    parser.getOperation(),
+                    parser.getArguments());
+            return tester.test();
         };
     }
 

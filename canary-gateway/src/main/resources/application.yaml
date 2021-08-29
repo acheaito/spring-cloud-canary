@@ -11,7 +11,7 @@ spring:
           uri: http://localhost:8081/
           predicates:
             - Path=/creditcheck
-            - HeaderPredicateFactory=x-account-key, !endsWith(1 2)
+            - ConditionalHeaderPredicateFactory=x-account-key, !endsWith(1 2)
           filters:
             - RewritePath=/(?<segment>.*), /v1/$\{segment}
 
@@ -19,6 +19,6 @@ spring:
           uri: http://localhost:8081/
           predicates:
             - Path=/creditcheck
-            - HeaderPredicateFactory=x-account-key, endsWith(1 2)
+            - ConditionalHeaderPredicateFactory=x-account-key, endsWith(1 2)
           filters:
             - RewritePath=/(?<segment>.*), /v2/$\{segment}
