@@ -5,7 +5,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum OperationName {
-    ENDS_WITH("endsWith");
+    ENDS_WITH("endsWith"),
+    STARTS_WITH("startsWith");
     private final String opName;
 
 

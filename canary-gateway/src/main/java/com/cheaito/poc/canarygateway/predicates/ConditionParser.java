@@ -41,7 +41,7 @@ public class ConditionParser {
     private void parseOperation() {
         String opName = matcher.group(2);
         if (unknownOperation(opName))
-            throw new UnsupportedOperationException("Requested operation is not valid: " + operation);
+            throw new UnknownOperation("Requested operation is not valid: " + operation);
 
         OperationName operationName = OperationName.from(opName);
         boolean isNegated = "!".equals(matcher.group(1));
@@ -63,8 +63,8 @@ public class ConditionParser {
             throw new IllegalArgumentException("condition cannot be blank");
     }
 
-    public static class UnsupportedOperationException extends RuntimeException{
-        public UnsupportedOperationException(String message) {
+    public static class UnknownOperation extends RuntimeException{
+        public UnknownOperation(String message) {
             super(message);
         }
     }

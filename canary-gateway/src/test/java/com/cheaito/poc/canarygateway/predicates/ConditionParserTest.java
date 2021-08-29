@@ -20,8 +20,8 @@ public class ConditionParserTest {
     }
 
     @Test
-    public void throwsUnsupportedOperationExceptionWhenOperationIsUnknown() {
-        assertThrows(ConditionParser.UnsupportedOperationException.class, () -> new ConditionParser("something()"));
+    public void throwsExceptionWhenOperationIsUnknown() {
+        assertThrows(ConditionParser.UnknownOperation.class, () -> new ConditionParser("something()"));
     }
 
     @Test

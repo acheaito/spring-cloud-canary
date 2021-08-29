@@ -17,6 +17,11 @@ public class ConditionTesterTest {
     }
 
     @Test
+    public void throwsExceptionWhenTestingAndOperationIsNotImplemented() {
+        assertThrows(ConditionTester.OperationNotImplemented.class, () -> new ConditionTester("something", new Operation(OperationName.STARTS_WITH, false), Collections.emptyList()).test());
+    }
+
+    @Test
     public void returnsFalseWhenValueIsBlank() {
         assertFalse(new ConditionTester("", ENDS_WITH, null).test());
         assertFalse(new ConditionTester(null, ENDS_WITH, null).test());

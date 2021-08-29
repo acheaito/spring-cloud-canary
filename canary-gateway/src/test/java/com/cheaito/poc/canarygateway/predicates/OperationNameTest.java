@@ -12,11 +12,13 @@ class OperationNameTest {
     @Test
     public void returnsOpNameForOperation() {
         assertEquals("endsWith", OperationName.ENDS_WITH.getOpName());
+        assertEquals("startsWith", OperationName.STARTS_WITH.getOpName());
     }
 
     @Test
     public void returnsEnumNameForOpName() {
         assertEquals(OperationName.ENDS_WITH, OperationName.from("endsWith"));
+        assertEquals(OperationName.STARTS_WITH, OperationName.from("startsWith"));
     }
 
     @Test

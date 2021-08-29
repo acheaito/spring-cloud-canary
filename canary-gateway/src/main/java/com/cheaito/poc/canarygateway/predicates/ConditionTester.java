@@ -27,7 +27,7 @@ public class ConditionTester {
             return false;
         if (operation.getName() == OperationName.ENDS_WITH)
             return testEndsWith();
-        return false;
+        throw new OperationNotImplemented("Operation is not yet implemented: " + operation.getName());
     }
 
     private boolean testEndsWith() {
@@ -44,5 +44,11 @@ public class ConditionTester {
             }
         }
         return false;
+    }
+
+    public static class OperationNotImplemented extends RuntimeException{
+        public OperationNotImplemented(String message) {
+            super(message);
+        }
     }
 }
