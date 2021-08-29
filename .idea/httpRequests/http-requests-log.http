@@ -1,0 +1,313 @@
+GET http://localhost:8080/creditcheck
+x-account-key: abc1235
+
+<> 2021-08-28T231707.200.txt
+
+###
+
+GET http://localhost:8080/creditcheck
+x-account-key: abc1231
+
+<> 2021-08-28T231705.200.txt
+
+###
+
+GET http://localhost:8080/creditcheckpct
+x-account-key: abc1231
+
+<> 2021-08-28T231703.200.txt
+
+###
+
+GET http://localhost:8080/creditcheckpct
+x-account-key: abc1231
+
+<> 2021-08-28T231701.200.txt
+
+###
+
+GET http://localhost:8080/creditcheckpct
+x-account-key: abc1231
+
+<> 2021-08-28T231700.200.txt
+
+###
+
+GET http://localhost:8080/creditcheckpct
+x-account-key: abc1231
+
+<> 2021-08-28T231659.200.txt
+
+###
+
+GET http://localhost:8080/creditcheckpct
+x-account-key: abc1231
+
+<> 2021-08-28T231658.200.txt
+
+###
+
+GET http://localhost:8080/creditcheckpct
+x-account-key: abc1231
+
+<> 2021-08-28T231654.200.txt
+
+###
+
+GET http://localhost:8080/creditcheckpct
+x-account-key: abc1231
+
+<> 2021-08-28T231551.404.json
+
+###
+
+GET http://localhost:8080/creditcheck
+x-account-key: abc1235
+
+<> 2021-08-28T231549.200.txt
+
+###
+
+GET http://localhost:8080/creditcheck
+x-account-key: abc1231
+
+<> 2021-08-28T231547.200.txt
+
+###
+
+GET http://localhost:8080/creditcheck
+x-account-key: abc1235
+
+<> 2021-08-28T231208.200.txt
+
+###
+
+GET http://localhost:8080/creditcheck
+x-account-key: abc1231
+
+<> 2021-08-28T231200.200.txt
+
+###
+
+GET http://localhost:8080/creditcheck
+
+<> 2021-08-28T231040.404.json
+
+###
+
+GET http://localhost:8080/creditcheck
+
+<> 2021-08-28T230809.404.json
+
+###
+
+GET http://localhost:8080/creditcheck
+
+<> 2021-08-28T230345.404.json
+
+###
+
+GET http://localhost:8080/creditcheck
+
+<> 2021-08-28T230158.404.json
+
+###
+
+GET http://localhost:8080/creditcheck
+
+<> 2021-08-28T230059.404.json
+
+###
+
+GET http://localhost:8080/creditcheck
+
+<> 2021-08-28T230033.404.json
+
+###
+
+GET http://localhost:8080/creditcheck
+
+<> 2021-08-28T230030.404.json
+
+###
+
+GET http://localhost:8081/v2/creditcheck
+
+<> 2021-08-28T230028.200.txt
+
+###
+
+GET http://localhost:8081/v1/creditcheck
+
+<> 2021-08-28T230024.200.txt
+
+###
+
+GET http://localhost:8081/v2/creditcheck
+
+<> 2021-08-28T230020.200.txt
+
+###
+
+GET http://localhost:8080/creditcheck
+
+<> 2021-08-24T101319-1.200.txt
+
+###
+
+GET http://localhost:8080/creditcheck
+
+<> 2021-08-24T101319.200.txt
+
+###
+
+GET http://localhost:8080/creditcheck
+
+<> 2021-08-24T101318.200.txt
+
+###
+
+GET http://localhost:8080/creditcheck
+
+<> 2021-08-24T101317-1.200.txt
+
+###
+
+GET http://localhost:8080/creditcheck
+
+<> 2021-08-24T101317.200.txt
+
+###
+
+GET http://localhost:8080/creditcheck
+
+<> 2021-08-24T101316-1.200.txt
+
+###
+
+GET http://localhost:8080/creditcheck
+
+<> 2021-08-24T101316.200.txt
+
+###
+
+GET http://localhost:8080/creditcheck
+
+<> 2021-08-24T101315.200.txt
+
+###
+
+GET http://localhost:8080/creditcheck
+
+<> 2021-08-24T101314-1.200.txt
+
+###
+
+GET http://localhost:8080/creditcheck
+
+<> 2021-08-24T101314.200.txt
+
+###
+
+GET http://localhost:8080/creditcheck
+
+<> 2021-08-24T101313-1.200.txt
+
+###
+
+GET http://localhost:8080/creditcheck
+
+<> 2021-08-24T101313.200.txt
+
+###
+
+GET http://localhost:8080/creditcheck
+
+<> 2021-08-24T101312-1.200.txt
+
+###
+
+GET http://localhost:8080/creditcheck
+
+<> 2021-08-24T101312.200.txt
+
+###
+
+GET http://localhost:8080/creditcheck
+
+<> 2021-08-24T101311-1.200.txt
+
+###
+
+GET http://localhost:8080/creditcheck
+
+<> 2021-08-24T101311.200.txt
+
+###
+
+GET http://localhost:8080/creditcheck
+
+<> 2021-08-24T101310.200.txt
+
+###
+
+GET http://localhost:8080/creditcheck
+
+<> 2021-08-24T101309-1.200.txt
+
+###
+
+GET http://localhost:8080/creditcheck
+
+<> 2021-08-24T101309.200.txt
+
+###
+
+GET http://localhost:8080/creditcheck
+
+<> 2021-08-24T101308.200.txt
+
+###
+
+GET http://localhost:8080/creditcheck
+
+<> 2021-08-24T101307-1.200.txt
+
+###
+
+GET http://localhost:8080/creditcheck
+
+<> 2021-08-24T101307.200.txt
+
+###
+
+GET http://localhost:8080/creditcheck
+
+<> 2021-08-24T101306.200.txt
+
+###
+
+GET http://localhost:8080/creditcheck
+
+<> 2021-08-24T101305.200.txt
+
+###
+
+GET http://localhost:8080/creditcheck
+
+<> 2021-08-24T101304.200.txt
+
+###
+
+GET http://localhost:8080/creditcheck
+
+<> 2021-08-24T101303-1.200.txt
+
+###
+
+GET http://localhost:8080/creditcheck
+
+<> 2021-08-24T101303.200.txt
+
+###
+

@@ -35,15 +35,20 @@ public class ConditionalHeaderPredicateFactory implements RoutePredicateFactory<
                     parser.getOperation(),
                     parser.getArguments());
             boolean decision = tester.test();
-            logDecision(exchange, decision);
+            logDecision(exchange, decision, config.getHeader(),
+                    valueToTest, parser.getOperation(), parser.getArguments());
             return decision;
         };
     }
 
-    private void logDecision(ServerWebExchange exchange, boolean decision) {
+    private void logDecision(ServerWebExchange exchange, boolean decision, String header,
+                             String valueToTest, Operation operation, List<String> arguments) {
         if (log.isTraceEnabled()) {
             String routeId = exchange.getAttribute(GATEWAY_PREDICATE_ROUTE_ATTR);
-            log.trace("route " + routeId + (decision ? " was" : " was not") + " followed");
+            log.trace("route " + routeId + (decision ? " was" : " was not") + " followed."
+                    + "Operation " + (operation.isNegated() ? "!":"") + operation.getName()
+                    + arguments.toString() + " was applied to header "
+                    + header + " with value " + valueToTest);
         }
     }
 

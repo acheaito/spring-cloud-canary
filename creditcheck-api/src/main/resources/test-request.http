@@ -4,5 +4,15 @@ GET http://localhost:8081/v1/creditcheck
 ### Modern
 GET http://localhost:8081/v2/creditcheck
 
-### Gateway
+### Gateway: Built-in percentage based routing
+GET http://localhost:8080/creditcheckpct
+x-account-key: abc1231
+
+### Gateway: Custom Conditional Header Predicate
+### Gateway: account ending with 1
 GET http://localhost:8080/creditcheck
+x-account-key: abc1231
+
+### Gateway: account ending with something else
+GET http://localhost:8080/creditcheck
+x-account-key: abc1235

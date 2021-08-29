@@ -7,7 +7,8 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: creditcheck_v1
+        # Custom conditional header predicate
+        - id: creditcheck_piloting_v1
           uri: http://localhost:8081/
           predicates:
             - Path=/creditcheck
@@ -15,10 +16,28 @@ spring:
           filters:
             - RewritePath=/(?<segment>.*), /v1/$\{segment}
 
-        - id: creditcheck_v2
+        - id: creditcheck_piloting_v2
           uri: http://localhost:8081/
           predicates:
             - Path=/creditcheck
             - ConditionalHeaderPredicateFactory=x-account-key, endsWith(1 2)
           filters:
             - RewritePath=/(?<segment>.*), /v2/$\{segment}
+
+        # Built-in percentage based routing
+        - id: creditcheck_percentage_v1
+          uri: http://localhost:8081/
+          predicates:
+            - Path=/creditcheckpct
+            - Weight=service1, 90
+          filters:
+            - RewritePath=/creditcheckpct(?<segment>.*), /v1/creditcheck$\{segment}
+
+        - id: creditcheck_percentage_v2
+          uri: http://localhost:8081/
+          predicates:
+            - Path=/creditcheckpct
+            - Weight=service1, 10
+          filters:
+            - RewritePath=/creditcheckpct(?<segment>.*), /v2/creditcheck$\{segment}
+
