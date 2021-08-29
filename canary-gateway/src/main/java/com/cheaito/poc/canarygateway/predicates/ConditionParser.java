@@ -8,21 +8,26 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-public class HeaderConditionParser {
-    private static final List<String> DEFINED_OPERATIONS = Arrays.asList("endsWith", "notEndsWith");
+public class ConditionParser {
     private static final String ARGUMENT_SEPARATOR = " ";
     public static final Pattern ARGUMENT_PATTERN = Pattern.compile("(!?)([\\w].*)\\((.*)\\)");
-    private final String header;
-    private String operation;
+    private Operation operation;
     private List<String> arguments;
     private Matcher matcher;
 
-    public HeaderConditionParser(String header, String condition) {
-        validateInputNotBlank(header, condition);
+    public ConditionParser(String condition) {
+        validateInputNotBlank(condition);
         createConditionMatcher(condition);
         parseOperation();
         parseArguments();
-        this.header = header;
+    }
+
+    public Operation getOperation() {
+        return operation;
+    }
+
+    public List<String> getArguments() {
+        return this.arguments;
     }
 
     private void parseArguments() {
@@ -34,19 +39,17 @@ public class HeaderConditionParser {
     }
 
     private void parseOperation() {
-        this.operation = matcher.group(2);
-        if (isNegated())
-            negateOperation();
-        if (!DEFINED_OPERATIONS.contains(operation))
+        String opName = matcher.group(2);
+        if (unknownOperation(opName))
             throw new UnsupportedOperationException("Requested operation is not valid: " + operation);
+
+        OperationName operationName = OperationName.from(opName);
+        boolean isNegated = "!".equals(matcher.group(1));
+        operation = new Operation(operationName, isNegated);
     }
 
-    private boolean isNegated() {
-        return "!".equals(matcher.group(1));
-    }
-
-    private void negateOperation() {
-        operation = "not" + operation.substring(0,1).toUpperCase() + operation.substring(1);
+    private boolean unknownOperation(String opName) {
+        return !OperationName.isValid(opName);
     }
 
     private void createConditionMatcher(String condition) {
@@ -55,23 +58,9 @@ public class HeaderConditionParser {
             throw new MalformedConditionException("Malformed condition: " + condition);
     }
 
-    private void validateInputNotBlank(String header, String condition) {
-        if(Strings.isBlank(header))
-            throw new IllegalArgumentException("header cannot be blank");
+    private void validateInputNotBlank(String condition) {
         if(Strings.isBlank(condition))
             throw new IllegalArgumentException("condition cannot be blank");
-    }
-
-    public String getHeader() {
-        return header;
-    }
-
-    public String getOperation() {
-        return operation;
-    }
-
-    public List<String> getArguments() {
-        return this.arguments;
     }
 
     public static class UnsupportedOperationException extends RuntimeException{
