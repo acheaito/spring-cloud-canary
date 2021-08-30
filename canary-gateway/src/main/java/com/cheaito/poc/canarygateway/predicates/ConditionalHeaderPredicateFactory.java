@@ -1,7 +1,7 @@
 package com.cheaito.poc.canarygateway.predicates;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.cloud.gateway.handler.predicate.RoutePredicateFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Component;
@@ -15,7 +15,7 @@ import static org.springframework.cloud.gateway.support.ServerWebExchangeUtils.G
 
 @Component
 public class ConditionalHeaderPredicateFactory implements RoutePredicateFactory<ConditionalHeaderConfig> {
-    private static final Log log = LogFactory.getLog(ConditionalHeaderPredicateFactory.class);
+    private static final Logger log = LoggerFactory.getLogger(ConditionalHeaderPredicateFactory.class);
     private final ConditionParserFactory parserFactory;
     private final ConditionTesterFactory testerFactory;
 
@@ -43,13 +43,14 @@ public class ConditionalHeaderPredicateFactory implements RoutePredicateFactory<
 
     private void logDecision(ServerWebExchange exchange, boolean decision, String header,
                              String valueToTest, Operation operation, List<String> arguments) {
-        if (log.isTraceEnabled()) {
-            String routeId = exchange.getAttribute(GATEWAY_PREDICATE_ROUTE_ATTR);
-            log.trace("route " + routeId + (decision ? " was" : " was not") + " followed."
-                    + "Operation " + (operation.isNegated() ? "!":"") + operation.getName()
-                    + arguments.toString() + " was applied to header "
-                    + header + " with value " + valueToTest);
-        }
+        log.trace("route {} {} followed. Operation {}{}{} was applied to header {} with value {}",
+                exchange.getAttribute(GATEWAY_PREDICATE_ROUTE_ATTR),
+                (decision ? " was" : " WAS NOT"),
+                (operation.isNegated() ? "!" : ""),
+                operation.getName(),
+                arguments.toString(),
+                header,
+                valueToTest);
     }
 
     @Override

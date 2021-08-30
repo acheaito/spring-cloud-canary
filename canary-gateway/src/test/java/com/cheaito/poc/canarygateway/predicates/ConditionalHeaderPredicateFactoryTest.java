@@ -16,8 +16,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class ConditionalHeaderPredicateFactoryTest {
@@ -76,7 +75,7 @@ class ConditionalHeaderPredicateFactoryTest {
         subject
                 .apply(config)
                 .test(serverExchange);
-        verify(parser).getOperation();
+        verify(parser, times(2)).getOperation();
     }
 
     @Test
