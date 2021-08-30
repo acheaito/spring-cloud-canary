@@ -1,4 +1,4 @@
-package com.cheaito.poc.canarygateway.predicates;
+package com.cheaito.canarygateway.predicate;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

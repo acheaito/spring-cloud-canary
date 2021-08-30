@@ -1,4 +1,4 @@
-package com.cheaito.poc.canarygateway.predicates;
+package com.cheaito.canarygateway.predicate;
 
 import java.util.Arrays;
 import java.util.HashMap;

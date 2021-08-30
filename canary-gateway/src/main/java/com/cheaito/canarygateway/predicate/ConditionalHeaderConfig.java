@@ -1,4 +1,4 @@
-package com.cheaito.poc.canarygateway.predicates;
+package com.cheaito.canarygateway.predicate;
 
 import org.springframework.core.style.ToStringCreator;
 import org.springframework.validation.annotation.Validated;

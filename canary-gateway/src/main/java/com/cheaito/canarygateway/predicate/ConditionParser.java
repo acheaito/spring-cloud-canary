@@ -1,4 +1,4 @@
-package com.cheaito.poc.canarygateway.predicates;
+package com.cheaito.canarygateway.predicate;
 
 import org.apache.logging.log4j.util.Strings;
 

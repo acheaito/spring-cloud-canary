@@ -1,0 +1,77 @@
+GET http://localhost:8080/creditcheck
+x-account-key: abc1235
+
+<> 2021-08-30T100653.200.txt
+
+###
+
+GET http://localhost:8080/creditcheck
+x-account-key: abc1231
+
+<> 2021-08-30T100650.200.txt
+
+###
+
+GET http://localhost:8080/creditcheck
+x-account-key: abc1235
+
+<> 2021-08-30T100647.200.txt
+
+###
+
+GET http://localhost:8080/creditcheck
+x-account-key: abc1231
+
+<> 2021-08-30T100234.200.txt
+
+###
+
+GET http://localhost:8080/creditcheck
+x-account-key: abc1235
+
+<> 2021-08-30T100153.200.txt
+
+###
+
+GET http://localhost:8080/creditcheck
+x-account-key: abc1231
+
+<> 2021-08-30T100150.200.txt
+
+###
+
+GET http://localhost:8080/creditcheck
+x-account-key: abc1235
+
+<> 2021-08-30T100139.200.txt
+
+###
+
+GET http://localhost:8080/creditcheck
+x-account-key: abc1231
+
+<> 2021-08-30T100133.200.txt
+
+###
+
+GET http://localhost:8080/creditcheckpct
+x-account-key: abc1231
+
+<> 2021-08-30T100126.200.txt
+
+###
+
+GET http://localhost:8080/creditcheckpct
+x-account-key: abc1231
+
+<> 2021-08-30T100125.200.txt
+
+###
+
+GET http://localhost:8080/creditcheckpct
+x-account-key: abc1231
+
+<> 2021-08-30T100107.200.txt
+
+###
+

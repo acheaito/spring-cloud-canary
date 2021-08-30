@@ -1,4 +1,4 @@
-package com.cheaito.poc.canarygateway;
+package com.cheaito.canarygateway;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;

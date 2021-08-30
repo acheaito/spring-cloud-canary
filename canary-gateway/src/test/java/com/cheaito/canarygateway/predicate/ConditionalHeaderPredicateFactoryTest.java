@@ -1,4 +1,4 @@
-package com.cheaito.poc.canarygateway.predicates;
+package com.cheaito.canarygateway.predicate;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
